@@ -210,30 +210,10 @@ body {
 }
 
 .featured-content h4 {
+    color: #1f2937;
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #2563eb;
-}
-
-.featured-image-placeholder {
-    background-color: #f3f4f6;
-    border: 2px dashed #d1d5db;
-    border-radius: 0.5rem;
-    padding: 2rem;
-    text-align: center;
-    color: #6b7280;
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.featured-image {
-    width: 100%;
-    height: auto;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Upload Section */
@@ -1143,4 +1123,56 @@ body {
 
 .project-clickable:hover .project-link-indicator span::after {
     transform: translateX(2px);
+}
+
+/* Profil Resmi Stilleri */
+.featured-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.profile-image {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    object-fit: cover;
+    aspect-ratio: 1;
+}
+
+.profile-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.15), 0 10px 15px -5px rgba(0, 0, 0, 0.06);
+}
+
+/* Featured content güncellemesi */
+.featured-content {
+    text-align: center;
+}
+
+.featured-content h4 {
+    color: #1f2937;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Responsive profil resmi */
+@media (max-width: 768px) {
+    .featured-image-container {
+        max-width: 250px;
+    }
+    
+    .profile-image {
+        border-radius: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .featured-image-container {
+        max-width: 200px;
+    }
 }
