@@ -1,8 +1,8 @@
 // Supabase Configuration
 // Bu bilgileri Supabase dashboard'unuzdan alacaksınız
 const SUPABASE_CONFIG = {
-    url: 'https://your-project.supabase.co', // Buraya kendi Supabase URL'inizi yazın
-    key: 'your-anon-key' // Buraya kendi anon key'inizi yazın
+    url: 'https://siveyftuwgnavyoczhir.supabase.co',
+    key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNpdmV5ZnR1d2duYXZ5b2N6aGlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg2MjQyOTgsImV4cCI6MjA3NDIwMDI5OH0.aq8vlNDfQh19I3OLScGo5BxDD89v830LqLVvIbX0WW8'
 };
 
 // Supabase client'ı yükle (CDN üzerinden)

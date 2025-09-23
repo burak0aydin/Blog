@@ -69,26 +69,44 @@ window.APP_STATE = {
   isAdminLoggedIn: false
 };
 
-// Basit Storage Manager - JSON dosyası kullanır
+// Gelişmiş Storage Manager - hem localStorage hem de Supabase kullanır
 class StorageManager {
   // Genel içerik kaydetme fonksiyonu - artık async
   static async saveContent(type, data) {
-    return await SimpleStorageManager.saveContent(type, data);
+    // Önce Supabase'i dene, olmassa SimpleStorageManager kullan
+    if (window.AdvancedStorageManager && typeof AdvancedStorageManager.saveContent === 'function') {
+      return await AdvancedStorageManager.saveContent(type, data);
+    } else {
+      return await SimpleStorageManager.saveContent(type, data);
+    }
   }
 
   // Genel içerik yükleme fonksiyonu - artık async
   static async loadContent(type) {
-    return await SimpleStorageManager.loadContent(type);
+    // Önce Supabase'i dene, olmassa SimpleStorageManager kullan
+    if (window.AdvancedStorageManager && typeof AdvancedStorageManager.loadContent === 'function') {
+      return await AdvancedStorageManager.loadContent(type);
+    } else {
+      return await SimpleStorageManager.loadContent(type);
+    }
   }
 
   // İçerik temizleme fonksiyonu - artık async
   static async clearContent(type) {
-    return await SimpleStorageManager.clearContent(type);
+    if (window.AdvancedStorageManager && typeof AdvancedStorageManager.clearContent === 'function') {
+      return await AdvancedStorageManager.clearContent(type);
+    } else {
+      return await SimpleStorageManager.clearContent(type);
+    }
   }
 
   // Sayfa yenilendiğinde verileri geri yükleme - artık async
   static async initializeFromStorage() {
-    return await SimpleStorageManager.initializeFromStorage();
+    if (window.AdvancedStorageManager && typeof AdvancedStorageManager.initializeFromStorage === 'function') {
+      return await AdvancedStorageManager.initializeFromStorage();
+    } else {
+      return await SimpleStorageManager.initializeFromStorage();
+    }
   }
 }
 
@@ -694,6 +712,18 @@ class ViewController {
 
 // Uygulama başlatma - DOM yüklendiğinde çalışır
 document.addEventListener('DOMContentLoaded', async () => {
+  // Önce Supabase'i başlatmayı dene
+  try {
+    if (typeof AdvancedStorageManager !== 'undefined') {
+      await AdvancedStorageManager.init();
+      console.log('✅ Supabase aktif');
+    } else {
+      console.log('ℹ️ Supabase mevcut değil, SimpleStorage kullanılıyor');
+    }
+  } catch (error) {
+    console.log('⚠️ Supabase başlatılamadı, SimpleStorage kullanılıyor:', error);
+  }
+  
   // Admin kimlik doğrulamasını başlat
   new AdminAuth();
   
