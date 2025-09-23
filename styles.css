@@ -339,8 +339,8 @@ body {
     width: 100%;
     height: auto;
     border-radius: 0.5rem;
-    max-height: 300px; /* Daha büyük */
-    max-width: 400px; /* Daha büyük genişlik */
+    max-height: 500px; /* Çok daha büyük */
+    max-width: 800px; /* Çok daha büyük genişlik */
     object-fit: cover;
     margin: 0 auto;
     display: block;
@@ -1151,7 +1151,7 @@ body {
 .featured-image-container {
     position: relative;
     width: 100%;
-    max-width: 400px; /* Daha büyük */
+    max-width: 600px; /* Çok daha büyük */
     margin: 0 auto;
     text-align: center;
     overflow: visible;
@@ -1159,11 +1159,11 @@ body {
 
 .profile-image {
     width: 100%;
-    height: 400px; /* Sabit yükseklik */
-    border-radius: 15px; /* Biraz daha yuvarlak köşeler */
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    height: 600px; /* Daha büyük yükseklik */
+    border-radius: 20px; /* Daha yuvarlak köşeler */
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    object-fit: cover; /* cover ile resim daha iyi doldurur */
+    object-fit: cover;
     display: block;
     border: none !important;
     background-color: transparent;
@@ -1205,11 +1205,11 @@ body {
 /* Responsive profil resmi */
 @media (max-width: 768px) {
     .featured-image-container {
-        max-width: 120px;
+        max-width: 400px; /* Mobilde de büyük */
     }
     
     .profile-image {
-        height: 120px;
+        height: 400px; /* Mobilde de büyük */
         border-width: 3px;
     }
     
@@ -1225,24 +1225,24 @@ body {
     /* Responsive resimler */
     #featured-image img:not(.profile-image),
     .preview-image {
-        max-width: 150px;
-        max-height: 100px;
+        max-width: 400px; /* Mobilde de büyük */
+        max-height: 300px; /* Mobilde de büyük */
     }
     
     .blog-content img,
     .blog-media img {
-        max-width: 200px;
-        max-height: 130px;
+        max-width: 400px; /* Mobilde de büyük */
+        max-height: 300px; /* Mobilde de büyük */
     }
 }
 
 @media (max-width: 480px) {
     .featured-image-container {
-        max-width: 100px;
+        max-width: 300px; /* Küçük ekranda da yeterince büyük */
     }
     
     .profile-image {
-        height: 100px;
+        height: 300px; /* Küçük ekranda da yeterince büyük */
         border-width: 2px;
     }
     
@@ -1254,14 +1254,14 @@ body {
     /* Daha küçük ekranlar için resimler */
     #featured-image img:not(.profile-image),
     .preview-image {
-        max-width: 120px;
-        max-height: 90px;
+        max-width: 300px; /* Küçük ekranda da yeterince büyük */
+        max-height: 250px; /* Küçük ekranda da yeterince büyük */
     }
     
     .blog-content img,
     .blog-media img {
-        max-width: 160px;
-        max-height: 110px;
+        max-width: 300px; /* Küçük ekranda da yeterince büyük */
+        max-height: 250px; /* Küçük ekranda da yeterince büyük */
     }
 }
 
