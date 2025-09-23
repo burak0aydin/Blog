@@ -69,27 +69,26 @@ window.APP_STATE = {
   isAdminLoggedIn: false
 };
 
-// Eski StorageManager'ı AdvancedStorageManager ile değiştiriyoruz
-// Artık hem localStorage hem de Supabase kullanacağız
+// Basit Storage Manager - JSON dosyası kullanır
 class StorageManager {
   // Genel içerik kaydetme fonksiyonu - artık async
   static async saveContent(type, data) {
-    return await AdvancedStorageManager.saveContent(type, data);
+    return await SimpleStorageManager.saveContent(type, data);
   }
 
   // Genel içerik yükleme fonksiyonu - artık async
   static async loadContent(type) {
-    return await AdvancedStorageManager.loadContent(type);
+    return await SimpleStorageManager.loadContent(type);
   }
 
   // İçerik temizleme fonksiyonu - artık async
   static async clearContent(type) {
-    return await AdvancedStorageManager.clearContent(type);
+    return await SimpleStorageManager.clearContent(type);
   }
 
   // Sayfa yenilendiğinde verileri geri yükleme - artık async
   static async initializeFromStorage() {
-    return await AdvancedStorageManager.initializeFromStorage();
+    return await SimpleStorageManager.initializeFromStorage();
   }
 }
 
@@ -695,9 +694,6 @@ class ViewController {
 
 // Uygulama başlatma - DOM yüklendiğinde çalışır
 document.addEventListener('DOMContentLoaded', async () => {
-  // Önce Supabase'i başlat
-  await AdvancedStorageManager.init();
-  
   // Admin kimlik doğrulamasını başlat
   new AdminAuth();
   
