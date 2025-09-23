@@ -210,7 +210,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 440px; /* Daha büyük resim için yükseklik artırıldı */
+    min-height: 300px; /* Biraz daha yüksek */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #f3f4f6;
 }
@@ -339,18 +339,18 @@ body {
     width: 100%;
     height: auto;
     border-radius: 0.5rem;
-    max-height: 200px; /* Daha büyük */
-    max-width: 280px; /* Genişlik sınırı artırıldı */
+    max-height: 120px; /* Daha küçük */
+    max-width: 180px; /* Genişlik sınırı */
     object-fit: cover;
     margin: 0 auto;
     display: block;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
 .preview-image:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .preview-video {
@@ -1150,33 +1150,32 @@ body {
 /* Profil Resmi Stilleri */
 .featured-image-container {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    max-width: 140px; /* Biraz daha büyük ama hala küçük */
     margin: 0 auto;
-    text-align: center;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .profile-image {
     width: 100%;
-    height: 100%;
+    height: 140px; /* Aynı şekilde biraz daha büyük */
+    border-radius: 50%; /* Tamamen yuvarlak */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     object-fit: cover;
-    border: none !important;
-    background-color: transparent;
-    transition: transform 0.3s ease;
-    display: block;
+    object-position: center;
+    border: 4px solid #ffffff;
 }
 
 .profile-image:hover {
     transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-color: #f0f9ff;
 }
 
 /* Featured content güncellemesi */
 .featured-content {
     text-align: center;
-    padding: 2rem;
+    padding: 1.5rem;
     background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
     border-radius: 1rem;
     width: 100%;
@@ -1186,13 +1185,11 @@ body {
     justify-content: center;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
 }
 
 .featured-content:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .featured-content h4 {
@@ -1205,13 +1202,12 @@ body {
 /* Responsive profil resmi */
 @media (max-width: 768px) {
     .featured-image-container {
-        max-width: 240px;
+        max-width: 120px;
     }
     
     .profile-image {
-        max-width: 100%;
-        height: auto;
-        border: none;
+        height: 120px;
+        border-width: 3px;
     }
     
     .featured-content {
@@ -1226,29 +1222,25 @@ body {
     /* Responsive resimler */
     #featured-image img:not(.profile-image),
     .preview-image {
-        max-width: 220px;
-        max-height: 160px;
+        max-width: 150px;
+        max-height: 100px;
     }
     
     .blog-content img,
     .blog-media img {
-        max-width: 300px;
-        max-height: 200px;
-    }
-    
-    .about-visual {
-        min-height: 360px; /* Tablet için yükseklik ayarlaması */
+        max-width: 200px;
+        max-height: 130px;
     }
 }
 
 @media (max-width: 480px) {
     .featured-image-container {
-        max-width: 200px;
+        max-width: 100px;
     }
     
     .profile-image {
-        height: 200px;
-        border-width: 3px;
+        height: 100px;
+        border-width: 2px;
     }
     
     .featured-content h4 {
@@ -1259,57 +1251,53 @@ body {
     /* Daha küçük ekranlar için resimler */
     #featured-image img:not(.profile-image),
     .preview-image {
-        max-width: 180px;
-        max-height: 130px;
+        max-width: 120px;
+        max-height: 90px;
     }
     
     .blog-content img,
     .blog-media img {
-        max-width: 220px;
-        max-height: 150px;
-    }
-    
-    .about-visual {
-        min-height: 320px; /* Mobil için yükseklik ayarlaması */
+        max-width: 160px;
+        max-height: 110px;
     }
 }
 
 /* Admin'den yüklenen resimler için özel stil */
 #featured-image img:not(.profile-image) {
-    max-width: 280px;
-    max-height: 200px;
+    max-width: 180px;
+    max-height: 120px;
     width: auto;
     height: auto;
     border-radius: 0.5rem;
     object-fit: cover;
     margin: 0 auto;
     display: block;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
 #featured-image img:not(.profile-image):hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Blog bölümündeki resimler için */
 .blog-content img,
 .blog-media img {
-    max-width: 400px;
-    max-height: 280px;
+    max-width: 250px;
+    max-height: 160px;
     width: auto;
     height: auto;
     border-radius: 0.5rem;
     object-fit: cover;
-    margin: 1.5rem auto;
+    margin: 1rem auto;
     display: block;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .blog-content img:hover,
 .blog-media img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
