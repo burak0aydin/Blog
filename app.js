@@ -69,69 +69,27 @@ window.APP_STATE = {
   isAdminLoggedIn: false
 };
 
-// LocalStorage ile veri saklama işlemlerini yöneten sınıf
+// Eski StorageManager'ı AdvancedStorageManager ile değiştiriyoruz
+// Artık hem localStorage hem de Supabase kullanacağız
 class StorageManager {
-  // Genel içerik kaydetme fonksiyonu
-  static saveContent(type, data) {
-    try {
-      const key = `blog_${type}`;
-      localStorage.setItem(key, JSON.stringify(data));
-      console.log(`✅ ${type} başarıyla localStorage'a kaydedildi`);
-    } catch (error) {
-      console.error(`❌ ${type} kaydedilirken hata:`, error);
-      throw error;
-    }
+  // Genel içerik kaydetme fonksiyonu - artık async
+  static async saveContent(type, data) {
+    return await AdvancedStorageManager.saveContent(type, data);
   }
 
-  // Genel içerik yükleme fonksiyonu
-  static loadContent(type) {
-    try {
-      const key = `blog_${type}`;
-      const stored = localStorage.getItem(key);
-      if (stored) {
-        return JSON.parse(stored);
-      }
-      return null;
-    } catch (error) {
-      console.error(`❌ ${type} yüklenirken hata:`, error);
-      return null;
-    }
+  // Genel içerik yükleme fonksiyonu - artık async
+  static async loadContent(type) {
+    return await AdvancedStorageManager.loadContent(type);
   }
 
-  // İçerik temizleme fonksiyonu
-  static clearContent(type) {
-    localStorage.removeItem(`blog_${type}`);
+  // İçerik temizleme fonksiyonu - artık async
+  static async clearContent(type) {
+    return await AdvancedStorageManager.clearContent(type);
   }
 
-  // Sayfa yenilendiğinde verileri geri yükleme
-  static initializeFromStorage() {
-    console.log('🚀 localStorage\'dan veriler yükleniyor...');
-    
-    // Blog yazısı yükleme
-    const textData = this.loadContent('text');
-    if (textData) {
-      window.APP_STATE.textTitle = textData.title || 'Blog Yazısı';
-      window.APP_STATE.textContent = textData.content || '';
-      console.log('✅ Blog yazısı yüklendi');
-    }
-
-    // Resim yükleme
-    const imageData = this.loadContent('image');
-    if (imageData) {
-      window.APP_STATE.imageURL = imageData.data;
-      console.log('✅ Resim yüklendi');
-    }
-
-    // YouTube video yükleme
-    const videoData = this.loadContent('video');
-    if (videoData && videoData.type === 'youtube') {
-      window.APP_STATE.videoURL = videoData.embedUrl;
-      window.APP_STATE.youtubeVideoId = videoData.videoId;
-      window.APP_STATE.youtubeUrl = videoData.originalUrl;
-      console.log('✅ YouTube video yüklendi');
-    }
-    
-    console.log('🏁 Veri yükleme tamamlandı');
+  // Sayfa yenilendiğinde verileri geri yükleme - artık async
+  static async initializeFromStorage() {
+    return await AdvancedStorageManager.initializeFromStorage();
   }
 }
 
@@ -257,7 +215,7 @@ class ViewController {
   constructor() {
     this.initializeEventListeners();
     this.renderStaticContent();
-    this.loadStoredContent();
+    // loadStoredContent artık main function'da async olarak çağrılıyor
     this.updateBlogContent();
   }
 
@@ -332,7 +290,7 @@ class ViewController {
     }
   }
 
-  // Blog yazısını localStorage'a kaydet
+  // Blog yazısını localStorage'a kaydet - async yapıldı
   async saveBlogContent() {
     const titleInput = document.getElementById('blog-title');
     const contentInput = document.getElementById('blog-content-input');
@@ -348,12 +306,12 @@ class ViewController {
     }
     
     try {
-      StorageManager.clearContent('text');
+      await StorageManager.clearContent('text');
       
       window.APP_STATE.textTitle = title || 'Blog Yazısı';
       window.APP_STATE.textContent = content;
       
-      StorageManager.saveContent('text', {
+      await StorageManager.saveContent('text', {
         title: title || 'Blog Yazısı',
         content: content,
         createdDate: new Date().toISOString()
@@ -369,7 +327,7 @@ class ViewController {
     }
   }
 
-  // Resim yükleme işlemini yönet
+  // Resim yükleme işlemini yönet - async yapıldı
   async handleImageUpload(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -380,10 +338,10 @@ class ViewController {
     }
 
     try {
-      StorageManager.clearContent('image');
+      await StorageManager.clearContent('image');
       
       const reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = async (e) => {
         const imageData = {
           name: file.name,
           type: file.type,
@@ -391,7 +349,7 @@ class ViewController {
           lastModified: file.lastModified
         };
         
-        StorageManager.saveContent('image', imageData);
+        await StorageManager.saveContent('image', imageData);
         window.APP_STATE.imageURL = imageData.data;
         
         this.updateImagePreview(imageData.data);
@@ -450,7 +408,7 @@ class ViewController {
     }
   }
 
-  // YouTube video ekle ve kaydet
+  // YouTube video ekle ve kaydet - async yapıldı
   async addYouTubeVideo() {
     const urlInput = document.getElementById('youtube-url');
     if (!urlInput) return;
@@ -464,13 +422,13 @@ class ViewController {
     }
     
     try {
-      StorageManager.clearContent('video');
+      await StorageManager.clearContent('video');
       
       window.APP_STATE.videoURL = `https://www.youtube.com/embed/${videoId}`;
       window.APP_STATE.youtubeVideoId = videoId;
       window.APP_STATE.youtubeUrl = url;
       
-      StorageManager.saveContent('video', {
+      await StorageManager.saveContent('video', {
         type: 'youtube',
         videoId: videoId,
         originalUrl: url,
@@ -570,11 +528,11 @@ class ViewController {
     blogElement.innerHTML = contentHTML;
   }
 
-  // Sayfa yüklendiğinde localStorage'dan verileri geri yükle
-  loadStoredContent() {
-    console.log('🔄 localStorage dan veriler yükleniyor...');
+  // Sayfa yüklendiğinde localStorage'dan verileri geri yükle - async yapıldı
+  async loadStoredContent() {
+    console.log('🔄 Veriler yükleniyor...');
     
-    StorageManager.initializeFromStorage();
+    await StorageManager.initializeFromStorage();
     
     console.log('📊 Mevcut uygulama durumu:', {
       textTitle: window.APP_STATE.textTitle,
@@ -736,12 +694,18 @@ class ViewController {
 }
 
 // Uygulama başlatma - DOM yüklendiğinde çalışır
-document.addEventListener('DOMContentLoaded', () => {
-  // Önce admin kimlik doğrulamasını başlat
+document.addEventListener('DOMContentLoaded', async () => {
+  // Önce Supabase'i başlat
+  await AdvancedStorageManager.init();
+  
+  // Admin kimlik doğrulamasını başlat
   new AdminAuth();
   
   // Ana view controller'ı başlat
-  new ViewController();
+  const viewController = new ViewController();
+  
+  // Verileri yükle (async olduğu için await kullan)
+  await viewController.loadStoredContent();
 
   // Klavye navigasyonu desteği ekle
   document.addEventListener('keydown', (e) => {
