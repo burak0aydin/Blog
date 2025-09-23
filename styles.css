@@ -210,7 +210,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 360px; /* Resmin büyüklüğüne uygun olarak artırıldı */
+    min-height: 440px; /* Daha büyük resim için yükseklik artırıldı */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #f3f4f6;
 }
@@ -1151,13 +1151,13 @@ body {
 .featured-image-container {
     position: relative;
     width: 100%;
-    max-width: 220px; /* Oldukça daha büyük */
+    max-width: 300px; /* Çok daha büyük */
     margin: 0 auto;
 }
 
 .profile-image {
     width: 100%;
-    height: 220px; /* Daha büyük */
+    height: 300px; /* Çok daha büyük */
     border-radius: 10px; /* Hafif yuvarlak köşeler */
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1202,11 +1202,11 @@ body {
 /* Responsive profil resmi */
 @media (max-width: 768px) {
     .featured-image-container {
-        max-width: 180px;
+        max-width: 240px;
     }
     
     .profile-image {
-        height: 180px;
+        height: 240px;
         border-width: 3px;
     }
     
@@ -1231,15 +1231,19 @@ body {
         max-width: 300px;
         max-height: 200px;
     }
+    
+    .about-visual {
+        min-height: 360px; /* Tablet için yükseklik ayarlaması */
+    }
 }
 
 @media (max-width: 480px) {
     .featured-image-container {
-        max-width: 150px;
+        max-width: 200px;
     }
     
     .profile-image {
-        height: 150px;
+        height: 200px;
         border-width: 3px;
     }
     
@@ -1259,6 +1263,10 @@ body {
     .blog-media img {
         max-width: 220px;
         max-height: 150px;
+    }
+    
+    .about-visual {
+        min-height: 320px; /* Mobil için yükseklik ayarlaması */
     }
 }
 
