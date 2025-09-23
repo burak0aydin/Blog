@@ -5,6 +5,14 @@ const SUPABASE_CONFIG = {
     key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNpdmV5ZnR1d2duYXZ5b2N6aGlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg2MjQyOTgsImV4cCI6MjA3NDIwMDI5OH0.aq8vlNDfQh19I3OLScGo5BxDD89v830LqLVvIbX0WW8'
 };
 
+// Global erişim için
+window.SUPABASE_CONFIG = SUPABASE_CONFIG;
+
+console.log('📋 Supabase Config yüklendi:', {
+    url: SUPABASE_CONFIG.url,
+    keyLength: SUPABASE_CONFIG.key ? SUPABASE_CONFIG.key.length : 0
+});
+
 // Supabase client'ı yükle (CDN üzerinden)
 let supabase = null;
 
