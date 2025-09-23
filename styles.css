@@ -339,18 +339,18 @@ body {
     width: 100%;
     height: auto;
     border-radius: 0.5rem;
-    max-height: 120px; /* Daha küçük */
-    max-width: 180px; /* Genişlik sınırı */
+    max-height: 300px; /* Daha büyük */
+    max-width: 400px; /* Daha büyük genişlik */
     object-fit: cover;
     margin: 0 auto;
     display: block;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
 }
 
 .preview-image:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .preview-video {
@@ -1151,25 +1151,28 @@ body {
 .featured-image-container {
     position: relative;
     width: 100%;
-    max-width: 140px; /* Biraz daha büyük ama hala küçük */
+    max-width: 400px; /* Daha büyük */
     margin: 0 auto;
+    text-align: center;
+    overflow: visible;
 }
 
 .profile-image {
     width: 100%;
-    height: 140px; /* Aynı şekilde biraz daha büyük */
-    border-radius: 50%; /* Tamamen yuvarlak */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    height: 400px; /* Sabit yükseklik */
+    border-radius: 15px; /* Biraz daha yuvarlak köşeler */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    object-fit: cover;
-    object-position: center;
-    border: 4px solid #ffffff;
+    object-fit: cover; /* cover ile resim daha iyi doldurur */
+    display: block;
+    border: none !important;
+    background-color: transparent;
+    margin: 0 auto;
 }
 
 .profile-image:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    border-color: #f0f9ff;
+    transform: scale(1.03);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
 }
 
 /* Featured content güncellemesi */
