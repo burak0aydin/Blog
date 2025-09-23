@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burak Aydın - Full-Stack Web & iOS Developer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>Burak Aydın</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#about" class="nav-link">Hakkımda</a></li>
+                <li><a href="#projects" class="nav-link">Projeler</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
+                <li><a href="#contact" class="nav-link">İletişim</a></li>
+                <li><a href="https://github.com/burak0aydin" target="_blank" class="nav-link external">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/burak0aydin" target="_blank" class="nav-link external">LinkedIn</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Merhaba, ben <span class="highlight">Burak Aydın</span></h1>
+                <p class="hero-subtitle">Full-Stack Web & iOS Developer</p>
+                <p class="hero-description">
+                    +2 yıldır kullanıcı odaklı iOS ve full-stack uygulamalar geliştiriyorum. 
+                    Hızlı adapte olur, takım içinde sorumluluk alırım.
+                </p>
+                <a href="#about" class="cta-button">Daha Fazla Keşfet</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Hakkımda</h2>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Kim Ben?</h3>
+                    <p>
+                        Süleyman Demirel Üniversitesi Bilgisayar Mühendisliği öğrencisiyim. 
+                        Akdeniz Üniversitesi'nde %100 İngilizce eğitim aldıktan sonra, 
+                        iOS ve full-stack web geliştirme alanında kendimi sürekli geliştiriyorum.
+                    </p>
+                    
+                    <h3>Hedeflerim</h3>
+                    <p>
+                        Kullanıcı deneyimini önceleyen, scalable ve maintainable uygulamalar geliştirmek. 
+                        Teknoloji ekosisteminde sürekli öğrenen ve katkı sağlayan bir developer olmak.
+                    </p>
+
+                    <h3>Temel Becerilerim</h3>
+                    <div class="skills-container">
+                        <div class="skill-category">
+                            <h4>Programlama Dilleri</h4>
+                            <div class="skill-tags" id="languages-skills"></div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Framework'ler</h4>
+                            <div class="skill-tags" id="frameworks-skills"></div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Backend & Veritabanı</h4>
+                            <div class="skill-tags" id="backend-skills"></div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Geliştirme Araçları</h4>
+                            <div class="skill-tags" id="tools-skills"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="featured-content">
+                        <h4>Ben</h4>
+                        <div id="featured-image" class="featured-image-placeholder">
+                            <p>En son geliştirdiğim projelerin görselleri burada yer alacak</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Login Section -->
+    <section id="admin-login" class="section admin-section" style="display: none;">
+        <div class="container">
+            <div class="admin-login-card">
+                <h2>Admin Giriş</h2>
+                <form id="admin-login-form">
+                    <div class="form-group">
+                        <label for="admin-username">Kullanıcı Adı:</label>
+                        <input type="text" id="admin-username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-password">Şifre:</label>
+                        <input type="password" id="admin-password" name="password" required>
+                    </div>
+                    <button type="submit" class="admin-login-btn">Giriş Yap</button>
+                    <div id="login-error" class="login-error" style="display: none;">
+                        Hatalı kullanıcı adı veya şifre!
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Panel Button (visible when not logged in) -->
+    <div id="admin-toggle" class="admin-toggle">
+        <button id="show-admin-login" class="admin-toggle-btn">Admin</button>
+    </div>
+
+    <!-- Admin Logout Button (visible when logged in) -->
+    <div id="admin-logout-container" class="admin-logout-container" style="display: none;">
+        <button id="admin-logout" class="admin-logout-btn">Çıkış Yap</button>
+    </div>
+
+    <!-- Content Upload Section - Only visible to admin -->
+    <section id="uploads" class="section bg-light admin-only" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">İçerik Ekle</h2>
+            <div class="upload-grid">
+                <!-- Text Input -->
+                <div class="upload-card">
+                    <div class="upload-header">
+                        <h3>Blog Yazısı Yaz</h3>
+                        <p>Blog yazınızı buraya yazın</p>
+                    </div>
+                    <div class="text-input-area">
+                        <input type="text" id="blog-title" placeholder="Blog yazısı başlığı..." class="blog-title-input">
+                        <textarea id="blog-content-input" placeholder="Blog yazınızı buraya yazın..." class="blog-content-textarea"></textarea>
+                        <button id="save-blog" class="save-blog-btn">Blog Yazısını Kaydet</button>
+                    </div>
+                    <div class="preview-area" id="text-preview">
+                        <h4>Önizleme</h4>
+                        <div class="text-preview-content">Blog yazısı henüz yazılmadı</div>
+                    </div>
+                </div>
+
+                <!-- Image Upload -->
+                <div class="upload-card">
+                    <div class="upload-header">
+                        <h3>Görsel Yükle</h3>
+                        <p>Blog için resim yükleyin</p>
+                    </div>
+                    <div class="upload-area">
+                        <label for="image-upload" class="upload-label">
+                            <input type="file" id="image-upload" accept="image/*" aria-describedby="image-help">
+                            <span class="upload-text">Dosya Seç veya Sürükle</span>
+                        </label>
+                        <p id="image-help" class="upload-help">Desteklenen formatlar: JPG, PNG, GIF, WebP</p>
+                    </div>
+                    <div class="preview-area" id="image-preview">
+                        <h4>Önizleme</h4>
+                        <div class="image-preview-content">Görsel henüz yüklenmedi</div>
+                    </div>
+                </div>
+
+                <!-- YouTube Video -->
+                <div class="upload-card">
+                    <div class="upload-header">
+                        <h3>YouTube Video Ekle</h3>
+                        <p>YouTube video linkini girin</p>
+                    </div>
+                    <div class="youtube-input-area">
+                        <input type="url" id="youtube-url" placeholder="YouTube video linki (örn: https://www.youtube.com/watch?v=...)" class="youtube-url-input">
+                        <button id="add-youtube-video" class="add-youtube-btn">Video Ekle</button>
+                    </div>
+                    <div class="preview-area" id="video-preview">
+                        <h4>Önizleme</h4>
+                        <div class="video-preview-content">YouTube video henüz eklenmedi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Projelerim</h2>
+            <div class="projects-grid" id="projects-container">
+                <!-- Projects will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Blog</h2>
+            <div class="blog-container">
+                <div class="blog-post" id="blog-content">
+                    <!-- Blog content will be loaded here -->
+                </div>
+                <div class="blog-media" id="blog-media">
+                    <!-- Uploaded images and videos will appear here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">İletişim</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Benimle İletişime Geçin</h3>
+                    <p>Projeler, iş birlikleri veya sadece merhaba demek için bana ulaşabilirsiniz.</p>
+                    <div class="contact-details" id="contact-details">
+                        <!-- Contact details will be dynamically loaded -->
+                    </div>
+                </div>
+                <div class="contact-actions">
+                    <h3>Hızlı İletişim</h3>
+                    <div class="contact-buttons">
+                        <a href="mailto:ios.burakaydin@gmail.com" class="contact-btn email-btn">
+                            E-posta Gönder
+                        </a>
+                        <a href="https://github.com/burak0aydin" target="_blank" class="contact-btn github-btn">
+                            GitHub Profili
+                        </a>
+                        <a href="https://www.linkedin.com/in/burak0aydin" target="_blank" class="contact-btn linkedin-btn">
+                            LinkedIn Profili
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Burak Aydın — 1911012833</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
