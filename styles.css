@@ -205,8 +205,12 @@ body {
 .about-visual {
     background-color: #ffffff;
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px; /* Sabit minimum yükseklik */
 }
 
 .featured-content h4 {
@@ -1129,55 +1133,66 @@ body {
 .featured-image-container {
     position: relative;
     width: 100%;
-    max-width: 200px; /* Daha küçük boyut */
+    max-width: 120px; /* Çok daha küçük */
     margin: 0 auto;
 }
 
 .profile-image {
     width: 100%;
-    height: 200px; /* Sabit yükseklik */
-    border-radius: 1rem;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    height: 120px; /* Çok daha küçük sabit yükseklik */
+    border-radius: 50%; /* Tamamen yuvarlak */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     object-fit: cover;
     object-position: center;
+    border: 3px solid #ffffff;
 }
 
 .profile-image:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.15), 0 10px 15px -5px rgba(0, 0, 0, 0.06);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Featured content güncellemesi */
 .featured-content {
     text-align: center;
+    padding: 1rem;
 }
 
 .featured-content h4 {
     color: #1f2937;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 /* Responsive profil resmi */
 @media (max-width: 768px) {
     .featured-image-container {
-        max-width: 150px; /* Daha da küçük mobilde */
+        max-width: 100px;
     }
     
     .profile-image {
-        height: 150px;
-        border-radius: 0.75rem;
+        height: 100px;
+    }
+    
+    .featured-content {
+        padding: 0.5rem;
+    }
+    
+    .featured-content h4 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
     }
 }
 
 @media (max-width: 480px) {
     .featured-image-container {
-        max-width: 120px; /* En küçük boyut */
+        max-width: 80px;
     }
     
     .profile-image {
-        height: 120px;
+        height: 80px;
+        border-width: 2px;
     }
 }
