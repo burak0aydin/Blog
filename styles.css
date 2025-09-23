@@ -1158,12 +1158,12 @@ body {
 }
 
 .profile-image {
-    width: 100%;
-    height: 600px; /* Daha büyük yükseklik */
-    border-radius: 20px; /* Daha yuvarlak köşeler */
+    width: 600px;
+    height: 600px;
+    border-radius: 20px;
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
     border: none !important;
     background-color: transparent;
@@ -1205,14 +1205,16 @@ body {
 /* Responsive profil resmi */
 @media (max-width: 768px) {
     .featured-image-container {
-        max-width: 90vw; /* Ekran genişliğinin %90'ı */
+        max-width: 90vw;
     }
     
     .profile-image {
+        width: 100%;
         height: auto;
-        min-height: 400px;
-        max-height: 600px;
+        max-width: 500px;
+        max-height: 500px;
         border-width: 3px;
+        object-fit: contain;
     }
     
     .featured-content {
@@ -1244,14 +1246,16 @@ body {
 
 @media (max-width: 480px) {
     .featured-image-container {
-        max-width: 95vw; /* Ekran genişliğinin %95'i */
+        max-width: 95vw;
     }
     
     .profile-image {
+        width: 100%;
         height: auto;
-        min-height: 300px;
-        max-height: 500px;
+        max-width: 400px;
+        max-height: 400px;
         border-width: 2px;
+        object-fit: contain;
     }
     
     .featured-content h4 {
