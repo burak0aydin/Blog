@@ -1129,18 +1129,18 @@ body {
 .featured-image-container {
     position: relative;
     width: 100%;
-    max-width: 300px;
+    max-width: 200px; /* Daha küçük boyut */
     margin: 0 auto;
 }
 
 .profile-image {
     width: 100%;
-    height: auto;
+    height: 200px; /* Sabit yükseklik */
     border-radius: 1rem;
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     object-fit: cover;
-    aspect-ratio: 1;
+    object-position: center;
 }
 
 .profile-image:hover {
@@ -1163,16 +1163,21 @@ body {
 /* Responsive profil resmi */
 @media (max-width: 768px) {
     .featured-image-container {
-        max-width: 250px;
+        max-width: 150px; /* Daha da küçük mobilde */
     }
     
     .profile-image {
+        height: 150px;
         border-radius: 0.75rem;
     }
 }
 
 @media (max-width: 480px) {
     .featured-image-container {
-        max-width: 200px;
+        max-width: 120px; /* En küçük boyut */
+    }
+    
+    .profile-image {
+        height: 120px;
     }
 }
