@@ -11,6 +11,7 @@
     <script src="supabase-config.js"></script>
     <!-- Supabase Debug -->
     <script src="supabase-debug.js"></script>
+    <script src="image-loader.js"></script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -88,7 +89,12 @@
                     <div class="featured-content">
                         <h4>Ben</h4>
                         <div id="featured-image" class="featured-image-container">
-                            <img src="./assets/profile-new.jpg" alt="Burak Aydın - Full Stack Developer" class="profile-image" style="border: none; max-width: 100%; height: auto;">
+                            <!-- Doğrudan eklenmiş sabit resim -->
+                            <img src="https://raw.githubusercontent.com/burak0aydin/Blog/main/assets/profile.jpg?v=1.0.4" 
+                                alt="Burak Aydın - Full Stack Developer" 
+                                class="profile-image" 
+                                onerror="this.onerror=null; this.src='assets/profile.jpg?v=1.0.4';"
+                                style="border: none !important; max-width: 100%; height: auto; object-fit: contain;">
                         </div>
                     </div>
                 </div>

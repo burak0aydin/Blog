@@ -1151,22 +1151,25 @@ body {
 .featured-image-container {
     position: relative;
     width: 100%;
-    max-width: 300px; /* Çok daha büyük */
+    max-width: 300px;
     margin: 0 auto;
     text-align: center;
+    overflow: visible;
 }
 
 .profile-image {
-    width: 100%;
-    max-width: 300px;
+    max-width: 100%;
+    width: auto;
     height: auto;
-    border-radius: 10px; /* Hafif yuvarlak köşeler */
+    border-radius: 10px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     object-fit: contain;
     display: inline-block;
-    border: none;
+    border: none !important;
     background-color: transparent;
+    margin: 0 auto;
+    vertical-align: middle;
 }
 
 .profile-image:hover {
