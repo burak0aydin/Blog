@@ -17,6 +17,7 @@ Ziyaretçiler içerikleri görebilir, admin paneli üzerinden ise yeni **blog ya
 ## Website
 [Siteyi ziyaret Etmek için tıklayın](https://blog-nu-olive-28.vercel.app/)
 
-https://github.com/user-attachments/assets/08dc265f-df11-4907-b3f5-b19cee43b90a
+---
 
+https://github.com/user-attachments/assets/aba68e63-fa8f-407e-bba6-418789227b01
 
