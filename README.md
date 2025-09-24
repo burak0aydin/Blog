@@ -8,13 +8,16 @@ Ziyaretçiler içerikleri görebilir, admin paneli üzerinden ise yeni **blog ya
 ## 🚀 Özellikler
 - Kullanıcı dostu, responsive arayüz
 - Admin panelinden içerik ekleme/düzenleme
-- Örnek admin giriş bilgileri:  
+
+---
+
+## Admin Girişi
   - **Kullanıcı Adı:** `admin`  
   - **Şifre:** `123456`
 
 ---
 
-## Website
+## Website Linki
 [Siteyi ziyaret Etmek için tıklayın](https://blog-nu-olive-28.vercel.app/)
 
 ---
